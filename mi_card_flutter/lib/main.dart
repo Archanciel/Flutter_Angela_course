@@ -72,9 +72,10 @@ class MyApp extends StatelessWidget {
                   title: Text(
                     'jp.schnyder@gmail.com',
                     style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.teal.shade900,
-                        fontFamily: 'Source Sans Pro'),
+                      fontSize: 20.0,
+                      color: Colors.teal.shade900,
+                      fontFamily: 'Source Sans Pro',
+                    ),
                   ),
                 ))
           ],
