@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler_flutter/question.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() => runApp(Quizzler());
 
@@ -25,7 +27,24 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  static const List<Question> _questionLst = [
+    Question(
+      'You can lead a cow down stairs but not up stairs.',
+      false,
+    ),
+    Question(
+      'Approximately one quarter of human bones are in the feet.',
+      true,
+    ),
+    Question(
+      'A slug\'s blood is green.',
+      true,
+    )
+  ];
+
+  int _currentQuestionIndex = 0;
   final List<Icon> _iconLst = [];
+  bool _stopQuestion = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +52,15 @@ class _QuizPageState extends State<QuizPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        const Expanded(
+        Expanded(
           flex: 5,
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                _questionLst[_currentQuestionIndex].question,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 25.0,
                   color: Colors.white,
                 ),
@@ -52,54 +71,82 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(15.0),
-            child: TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.green,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onSurface: Colors.green.shade200,
                 shape: BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(4)),
+                  borderRadius: BorderRadius.circular(4),
+                ),
               ),
               child: const Text(
                 'True',
                 style: TextStyle(
-                  color: Colors.white,
                   fontSize: 20.0,
                 ),
               ),
-              onPressed: () {
-                setState(() {
-                  _iconLst.add(const Icon(
-                    Icons.check,
-                    color: Colors.green,
-                  ));
-                }); //The user picked true.
-              },
+              onPressed: _stopQuestion
+                  ? null
+                  : () {
+                      setState(
+                        () {
+                          if (_questionLst[_currentQuestionIndex].answer ==
+                              true) {
+                            _iconLst.add(const Icon(
+                              Icons.check,
+                              color: Colors.green,
+                            ));
+                          } else {
+                            _iconLst.add(const Icon(
+                              Icons.close,
+                              color: Colors.red,
+                            ));
+                          }
+
+                          _increaseNextQuestionIndex();
+                        },
+                      ); // The user picked true.
+                    },
             ),
           ),
         ),
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15.0),
-            child: TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.red,
-                shape: BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(4)),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onSurface: Colors.red.shade200,
+                primary: Colors.red,
               ),
               child: const Text(
                 'False',
                 style: TextStyle(
-                  color: Colors.white,
+                  //                 color: Colors.white,
                   fontSize: 20.0,
                 ),
               ),
-              onPressed: () {
-                setState(() {
-                  _iconLst.add(const Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ));
-                }); //The user picked true.
-              },
+              onPressed: _stopQuestion
+                  ? null
+                  : () {
+                      setState(
+                        () {
+                          if (_QuizPageState
+                                  ._questionLst[_currentQuestionIndex].answer ==
+                              false) {
+                            _iconLst.add(const Icon(
+                              Icons.check,
+                              color: Colors.green,
+                            ));
+                          } else {
+                            _iconLst.add(const Icon(
+                              Icons.close,
+                              color: Colors.red,
+                            ));
+                          }
+                          _increaseNextQuestionIndex();
+                        },
+                      );
+                    }, //The user picked true.
             ),
           ),
         ),
@@ -107,10 +154,50 @@ class _QuizPageState extends State<QuizPage> {
       ],
     );
   }
-}
 
-/*
-question1: 'You can lead a cow down stairs but not up stairs.', false,
-question2: 'Approximately one quarter of human bones are in the feet.', true,
-question3: 'A slug\'s blood is green.', true,
-*/
+  void _increaseNextQuestionIndex() {
+    _currentQuestionIndex = ++_currentQuestionIndex % _questionLst.length;
+
+    if (_currentQuestionIndex == 0) {
+      Alert(
+        context: context,
+        type: AlertType.warning,
+        title: "RFLUTTER ALERT",
+        desc: "You reached the end of the question list.",
+        buttons: [
+          DialogButton(
+            child: const Text(
+              "Restart",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () {
+              setState(
+                () {
+                  _stopQuestion = false;
+                },
+              );
+              Navigator.pop(context);
+            },
+            width: 120,
+          ),
+          DialogButton(
+            child: const Text(
+              "End",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () {
+              setState(
+                () {
+                  _stopQuestion = true;
+                  _currentQuestionIndex = _questionLst.length - 1;
+                },
+              );
+              Navigator.pop(context);
+            },
+            width: 120,
+          )
+        ],
+      ).show();
+    }
+  }
+}
