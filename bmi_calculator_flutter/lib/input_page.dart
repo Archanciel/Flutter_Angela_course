@@ -9,11 +9,7 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final double containerHeightMax = screenHeight * 0.251;
-    final double containerHeightMin = screenHeight * 0.21;
     final screenWidth = MediaQuery.of(context).size.width;
-    final double containerWidth = screenWidth * 0.416;
-    const Color containerBackgroundColor = Color(0xFF1D1E33);
 
     return Scaffold(
       appBar: AppBar(
@@ -23,62 +19,53 @@ class _InputPageState extends State<InputPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: containerHeightMax,
-                width: containerWidth,
-                margin: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: containerBackgroundColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Expanded(
+                  child: ReusableCard(),
                 ),
-              ),
-              Container(
-                height: containerHeightMax,
-                width: containerWidth,
-                margin: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: containerBackgroundColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                Expanded(
+                  child: ReusableCard(),
                 ),
-              ),
-            ],
-          ),
-          Container(
-            height: containerHeightMin,
-            width: screenWidth,
-            margin: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: containerBackgroundColor,
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: containerHeightMax,
-                width: containerWidth,
-                margin: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: containerBackgroundColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+          const Expanded(
+            child: ReusableCard(),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Expanded(
+                  child: ReusableCard(),
                 ),
-              ),
-              Container(
-                height: containerHeightMax,
-                width: containerWidth,
-                margin: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: containerBackgroundColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                Expanded(
+                  child: ReusableCard(),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ReusableCard extends StatelessWidget {
+  const ReusableCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(15),
+      decoration: const BoxDecoration(
+        color: Color(0xFF1D1E33),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
     );
   }
