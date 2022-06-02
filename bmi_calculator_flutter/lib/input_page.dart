@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+const double bottomContainerHeight = 80;
+const Color bottomContainerColor = Color(0xFFEB1555);
+const reusableCardColor = Color(0xFF1D1E33);
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -8,9 +12,6 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('BMI CALCULATOR'),
@@ -24,30 +25,36 @@ class _InputPageState extends State<InputPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(color: reusableCardColor),
                 ),
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(color: reusableCardColor),
                 ),
               ],
             ),
           ),
           const Expanded(
-            child: ReusableCard(),
+            child: ReusableCard(color: reusableCardColor),
           ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(color: reusableCardColor),
                 ),
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(color: reusableCardColor),
                 ),
               ],
             ),
           ),
+          Container(
+            color: bottomContainerColor,
+            margin: EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          )
         ],
       ),
     );
@@ -55,18 +62,20 @@ class _InputPageState extends State<InputPage> {
 }
 
 class ReusableCard extends StatelessWidget {
-  const ReusableCard({
-    Key? key,
-  }) : super(key: key);
+  final Color _color;
+  final Widget? _carsChild;
+
+  const ReusableCard({required Color color, Widget? cardChild}) : _color = color, _carsChild = cardChild;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(15),
-      decoration: const BoxDecoration(
-        color: Color(0xFF1D1E33),
+      decoration: BoxDecoration(
+        color: _color,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
+      child: _carsChild,
     );
   }
 }
