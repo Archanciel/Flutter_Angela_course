@@ -63,9 +63,11 @@ class _InputPageState extends State<InputPage> {
 
 class ReusableCard extends StatelessWidget {
   final Color _color;
-  final Widget? _carsChild;
+  final Widget? _cardChild;
 
-  const ReusableCard({required Color color, Widget? cardChild}) : _color = color, _carsChild = cardChild;
+  const ReusableCard({required Color color, Widget? cardChild})
+      : _color = color,
+        _cardChild = cardChild;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,7 @@ class ReusableCard extends StatelessWidget {
         color: _color,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-      child: _carsChild,
+      child: _cardChild,
     );
   }
 }
