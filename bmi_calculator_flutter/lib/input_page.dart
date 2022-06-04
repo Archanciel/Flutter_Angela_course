@@ -56,37 +56,35 @@ class _InputPageState extends State<InputPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (() {
-                      _selectedGender = Gender.male;
-                      setState(() {});
-                    }),
-                    child: ReusableCard(
-                      color: (_selectedGender == Gender.male)
-                          ? activeCardColor
-                          : inactiveCardColor,
-                      cardChild: const IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: 'MALE',
-                      ),
+                  child: ReusableCard(
+                    color: (_selectedGender == Gender.male)
+                        ? activeCardColor
+                        : inactiveCardColor,
+                    cardChild: const IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
                     ),
+                    onPress: (() {
+                      setState(() {
+                        _selectedGender = Gender.male;
+                      });
+                    }),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (() {
-                      _selectedGender = Gender.female;
-                      setState(() {});
-                    }),
-                    child: ReusableCard(
-                      color: (_selectedGender == Gender.female)
-                          ? activeCardColor
-                          : inactiveCardColor,
-                      cardChild: const IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
+                  child: ReusableCard(
+                    color: (_selectedGender == Gender.female)
+                        ? activeCardColor
+                        : inactiveCardColor,
+                    cardChild: const IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
                     ),
+                    onPress: (() {
+                      setState(() {
+                        _selectedGender = Gender.female;
+                      });
+                    }),
                   ),
                 ),
               ],
