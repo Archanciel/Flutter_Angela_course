@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const double bottomContainerHeight = 80;
 const Color bottomContainerColor = Color(0xFFEB1555);
@@ -23,12 +24,35 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Expanded(
-                  child: ReusableCard(color: reusableCardColor),
+                  child: ReusableCard(
+                    color: reusableCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(
+                          FontAwesomeIcons.mars,
+                          size: 60,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "MALE",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Color(0xFF808E98),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                Expanded(
-                  child: ReusableCard(color: reusableCardColor),
+                const Expanded(
+                  child: ReusableCard(
+                    color: reusableCardColor,
+                  ),
                 ),
               ],
             ),
