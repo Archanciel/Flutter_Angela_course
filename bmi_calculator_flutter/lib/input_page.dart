@@ -86,8 +86,40 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          const Expanded(
-            child: ReusableCard(color: kActiveCardColor),
+          Expanded(
+            child: ReusableCard(
+              color: kActiveCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'HEIGHT',
+                        style: kLabelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    textBaseline: TextBaseline.alphabetic,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    children: const [
+                      Text(
+                        '180',
+                        style: kNumberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
@@ -103,7 +135,7 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Container(
-            color: kBbottomContainerColor,
+            color: kBottomContainerColor,
             margin: EdgeInsets.only(top: 10),
             width: double.infinity,
             height: kBottomContainerHeight,
