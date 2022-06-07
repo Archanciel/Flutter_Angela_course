@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const double iconSize = 40;
 const double labelFontSize = 13;
-const labelTextStyle = const TextStyle(
+const labelTextStyle = TextStyle(
   fontSize: labelFontSize,
   color: Color(0xFF808E98),
 );
