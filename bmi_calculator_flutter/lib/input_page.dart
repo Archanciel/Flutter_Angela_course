@@ -13,24 +13,24 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color _maleCardColor = inactiveCardColor;
-  Color _femaleCardColor = inactiveCardColor;
+  Color _maleCardColor = kIinactiveCardColor;
+  Color _femaleCardColor = kIinactiveCardColor;
   Gender? _selectedGender;
 
   void _updateCardColor(Gender cardType) {
     if (cardType == Gender.male) {
-      if (_maleCardColor == inactiveCardColor) {
-        _maleCardColor = activeCardColor;
-        _femaleCardColor = inactiveCardColor;
+      if (_maleCardColor == kIinactiveCardColor) {
+        _maleCardColor = kActiveCardColor;
+        _femaleCardColor = kIinactiveCardColor;
       } else {
-        _maleCardColor = inactiveCardColor;
+        _maleCardColor = kIinactiveCardColor;
       }
     } else {
-      if (_femaleCardColor == inactiveCardColor) {
-        _femaleCardColor = activeCardColor;
-        _maleCardColor = inactiveCardColor;
+      if (_femaleCardColor == kIinactiveCardColor) {
+        _femaleCardColor = kActiveCardColor;
+        _maleCardColor = kIinactiveCardColor;
       } else {
-        _femaleCardColor = inactiveCardColor;
+        _femaleCardColor = kIinactiveCardColor;
       }
     }
 
@@ -54,8 +54,8 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     color: (_selectedGender == Gender.male)
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? kActiveCardColor
+                        : kIinactiveCardColor,
                     cardChild: const IconContent(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
@@ -70,8 +70,8 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     color: (_selectedGender == Gender.female)
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? kActiveCardColor
+                        : kIinactiveCardColor,
                     cardChild: const IconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
@@ -87,26 +87,26 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           const Expanded(
-            child: ReusableCard(color: activeCardColor),
+            child: ReusableCard(color: kActiveCardColor),
           ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 Expanded(
-                  child: ReusableCard(color: activeCardColor),
+                  child: ReusableCard(color: kActiveCardColor),
                 ),
                 Expanded(
-                  child: ReusableCard(color: activeCardColor),
+                  child: ReusableCard(color: kActiveCardColor),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColor,
+            color: kBbottomContainerColor,
             margin: EdgeInsets.only(top: 10),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           )
         ],
       ),
