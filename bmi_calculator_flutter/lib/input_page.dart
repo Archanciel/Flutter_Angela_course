@@ -13,24 +13,25 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color _maleCardColor = kIinactiveCardColor;
-  Color _femaleCardColor = kIinactiveCardColor;
+  Color _maleCardColor = kInactiveCardColor;
+  Color _femaleCardColor = kInactiveCardColor;
   Gender? _selectedGender;
+  int _height = 180;
 
   void _updateCardColor(Gender cardType) {
     if (cardType == Gender.male) {
-      if (_maleCardColor == kIinactiveCardColor) {
+      if (_maleCardColor == kInactiveCardColor) {
         _maleCardColor = kActiveCardColor;
-        _femaleCardColor = kIinactiveCardColor;
+        _femaleCardColor = kInactiveCardColor;
       } else {
-        _maleCardColor = kIinactiveCardColor;
+        _maleCardColor = kInactiveCardColor;
       }
     } else {
-      if (_femaleCardColor == kIinactiveCardColor) {
+      if (_femaleCardColor == kInactiveCardColor) {
         _femaleCardColor = kActiveCardColor;
-        _maleCardColor = kIinactiveCardColor;
+        _maleCardColor = kInactiveCardColor;
       } else {
-        _femaleCardColor = kIinactiveCardColor;
+        _femaleCardColor = kInactiveCardColor;
       }
     }
 
@@ -55,7 +56,7 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     color: (_selectedGender == Gender.male)
                         ? kActiveCardColor
-                        : kIinactiveCardColor,
+                        : kInactiveCardColor,
                     cardChild: const IconContent(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
@@ -71,7 +72,7 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     color: (_selectedGender == Gender.female)
                         ? kActiveCardColor
-                        : kIinactiveCardColor,
+                        : kInactiveCardColor,
                     cardChild: const IconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
@@ -106,17 +107,27 @@ class _InputPageState extends State<InputPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     textBaseline: TextBaseline.alphabetic,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
-                    children: const [
+                    children: [
                       Text(
-                        '180',
+                        _height.toString(),
                         style: kNumberTextStyle,
                       ),
-                      Text(
+                      const Text(
                         'cm',
                         style: kLabelTextStyle,
                       )
                     ],
                   ),
+                  Slider(
+                      value: _height.toDouble(),
+                      min: kSliderMinValue,
+                      max: kSliderMaxValue,
+                      activeColor: kSliderActiveColor,
+                      inactiveColor: kSliderInactiveColor,
+                      onChanged: (double newValue) {
+                        _height = newValue.round();
+                        setState(() {});
+                      }),
                 ],
               ),
             ),

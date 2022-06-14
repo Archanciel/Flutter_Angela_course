@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 const double kBottomContainerHeight = 80;
 const Color kBottomContainerColor = Color(0xFFEB1555);
 const Color kActiveCardColor = Color(0xFF1D1E33);
-const Color kIinactiveCardColor = Color(0xFF111328);
+const Color kInactiveCardColor = Color(0xFF111328);
+const Color kSliderActiveColor = Colors.white;
+const Color kSliderInactiveColor = Color(0xFF8E8D98);
+const double kSliderMinValue = 120.0;
+const double kSliderMaxValue = 220.0;
 
 const double kIconSize = 40;
 const double kLabelFontSize = 13;
