@@ -17,6 +17,7 @@ class _InputPageState extends State<InputPage> {
   Color _femaleCardColor = kInactiveCardColor;
   Gender? _selectedGender;
   int _height = 180;
+  int _weight = 60;
 
   void _updateCardColor(Gender cardType) {
     if (cardType == Gender.male) {
@@ -124,8 +125,10 @@ class _InputPageState extends State<InputPage> {
                       activeTrackColor: kSliderActiveColor,
                       thumbColor: kSliderThumbColor,
                       overlayColor: kSliderOverlayColor,
-                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                      overlayShape: const RoundSliderOverlayShape(overlayRadius: 30.0),
+                      thumbShape:
+                          const RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      overlayShape:
+                          const RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
                     child: Slider(
                         value: _height.toDouble(),
@@ -143,12 +146,29 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Expanded(
-                  child: ReusableCard(color: kActiveCardColor),
+                  child: ReusableCard(
+                    color: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          _weight.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(color: kActiveCardColor),
+                  child: ReusableCard(
+                    color: kActiveCardColor,
+                  ),
                 ),
               ],
             ),
