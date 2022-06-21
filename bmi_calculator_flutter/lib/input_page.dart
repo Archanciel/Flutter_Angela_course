@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_flutter/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -161,6 +162,28 @@ class _InputPageState extends State<InputPage> {
                           _weight.toString(),
                           style: kNumberTextStyle,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              onPressed: () {
+                                _weight -= 1;
+                                setState(() {});
+                              },
+                              icon: Icons.remove,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                              onPressed:  () {
+                                _weight += 1;
+                                setState(() {});
+                              },
+                              icon: Icons.add,
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
