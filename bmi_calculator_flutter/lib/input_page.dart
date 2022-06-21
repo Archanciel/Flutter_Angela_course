@@ -172,7 +172,7 @@ class _InputPageState extends State<InputPage> {
                               },
                               icon: Icons.remove,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             RoundIconButton(
