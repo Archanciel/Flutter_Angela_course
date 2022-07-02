@@ -6,36 +6,29 @@ import 'constants.dart';
 class MinusPlusValue extends StatefulWidget {
   int _weight;
   final String _label;
-  final void Function(int value) _onPressed;
 
   MinusPlusValue({
     required int weight,
     required String label,
-    required void Function(int value) onPressed,
   })  : _weight = weight,
-        _label = label,
-        _onPressed = onPressed;
+        _label = label;
 
   @override
   State<MinusPlusValue> createState() => _MinusPlusValueState(
         weight: _weight,
         label: _label,
-        onPressed: _onPressed,
       );
 }
 
 class _MinusPlusValueState extends State<MinusPlusValue> {
   int _weight;
   final String _label;
-  final void Function(int value) _onPressed;
 
   _MinusPlusValueState({
     required int weight,
     required String label,
-    required void Function(int value) onPressed,
   })  : _weight = weight,
-        _label = label,
-        _onPressed = onPressed;
+        _label = label;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +49,7 @@ class _MinusPlusValueState extends State<MinusPlusValue> {
             RoundIconButton(
               onPressed: () {
                 _weight -= 1;
-                widget._onPressed(_weight);
+                setState(() {});
               },
               icon: Icons.remove,
             ),
@@ -66,7 +59,7 @@ class _MinusPlusValueState extends State<MinusPlusValue> {
             RoundIconButton(
               onPressed: () {
                 _weight += 1;
-                widget._onPressed(_weight);
+                setState(() {});
               },
               icon: Icons.add,
             ),
