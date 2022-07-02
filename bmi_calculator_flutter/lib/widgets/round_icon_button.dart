@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class RoundIconButton extends StatelessWidget {
+  final IconData _icon;
+  final void Function() _onPressed;
+
   const RoundIconButton({
     Key? key,
     required void Function() onPressed,
@@ -8,9 +11,6 @@ class RoundIconButton extends StatelessWidget {
   })  : _onPressed = onPressed,
         _icon = icon,
         super(key: key);
-
-  final IconData _icon;
-  final void Function() _onPressed;
 
   @override
   Widget build(BuildContext context) {
