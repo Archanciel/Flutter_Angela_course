@@ -1,7 +1,7 @@
-import 'package:bmi_calculator_flutter/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
+import 'package:bmi_calculator_flutter/widgets/round_icon_button.dart';
 
 class MinusPlusValue extends StatefulWidget {
   final int _value;
