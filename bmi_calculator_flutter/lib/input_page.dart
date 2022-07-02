@@ -20,22 +20,8 @@ class _InputPageState extends State<InputPage> {
   int _height = 180;
   int _weight = 60;
 
-  void _updateCardColor(Gender cardType) {
-    if (cardType == Gender.male) {
-      if (_maleCardColor == kInactiveCardColor) {
-        _maleCardColor = kActiveCardColor;
-        _femaleCardColor = kInactiveCardColor;
-      } else {
-        _maleCardColor = kInactiveCardColor;
-      }
-    } else {
-      if (_femaleCardColor == kInactiveCardColor) {
-        _femaleCardColor = kActiveCardColor;
-        _maleCardColor = kInactiveCardColor;
-      } else {
-        _femaleCardColor = kInactiveCardColor;
-      }
-    }
+  void setWeight(int weight) {
+    _weight = weight;
 
     setState(() {});
   }
@@ -176,7 +162,7 @@ class _InputPageState extends State<InputPage> {
                               width: 10.0,
                             ),
                             RoundIconButton(
-                              onPressed:  () {
+                              onPressed: () {
                                 _weight += 1;
                                 setState(() {});
                               },
