@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_flutter/widgets/minus_plus_value.dart';
 import 'package:bmi_calculator_flutter/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,13 +19,7 @@ class _InputPageState extends State<InputPage> {
   Color _femaleCardColor = kInactiveCardColor;
   Gender? _selectedGender;
   int _height = 180;
-  int _weight = 60;
-
-  void setWeight(int weight) {
-    _weight = weight;
-
-    setState(() {});
-  }
+  //int _weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -137,40 +132,9 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     color: kActiveCardColor,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'WEIGHT',
-                          style: kLabelTextStyle,
-                        ),
-                        Text(
-                          _weight.toString(),
-                          style: kNumberTextStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              onPressed: () {
-                                _weight -= 1;
-                                setState(() {});
-                              },
-                              icon: Icons.remove,
-                            ),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            RoundIconButton(
-                              onPressed: () {
-                                _weight += 1;
-                                setState(() {});
-                              },
-                              icon: Icons.add,
-                            ),
-                          ],
-                        )
-                      ],
+                    cardChild: MinusPlusValue(
+                      weight: 60,
+                      label: 'WEIGHT',
                     ),
                   ),
                 ),

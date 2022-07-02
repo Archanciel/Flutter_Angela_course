@@ -40,7 +40,7 @@ class _MinusPlusValueState extends State<MinusPlusValue> {
           style: kLabelTextStyle,
         ),
         Text(
-          widget._weight.toString(),
+          _weight.toString(),
           style: kNumberTextStyle,
         ),
         Row(
@@ -48,8 +48,11 @@ class _MinusPlusValueState extends State<MinusPlusValue> {
           children: [
             RoundIconButton(
               onPressed: () {
-                _weight -= 1;
-                setState(() {});
+                print(_weight);
+                setState(() {
+                  _weight -= 1;
+                });
+                print(_weight);
               },
               icon: Icons.remove,
             ),
