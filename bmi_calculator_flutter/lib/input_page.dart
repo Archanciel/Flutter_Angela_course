@@ -141,6 +141,10 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     color: kActiveCardColor,
+                    cardChild: MinusPlusValue(
+                      value: 19,
+                      label: 'AGE',
+                    ),
                   ),
                 ),
               ],
