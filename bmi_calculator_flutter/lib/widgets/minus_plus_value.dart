@@ -3,16 +3,36 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 
-class MinusPlusValue extends StatelessWidget {
+class MinusPlusValue extends StatefulWidget {
   int _weight;
   final String _label;
-  final void Function() _onPressed;
+  final void Function(int value) _onPressed;
 
   MinusPlusValue({
     required int weight,
     required String label,
-    required parent,
-    required void Function() onPressed,
+    required void Function(int value) onPressed,
+  })  : _weight = weight,
+        _label = label,
+        _onPressed = onPressed;
+
+  @override
+  State<MinusPlusValue> createState() => _MinusPlusValueState(
+        weight: _weight,
+        label: _label,
+        onPressed: _onPressed,
+      );
+}
+
+class _MinusPlusValueState extends State<MinusPlusValue> {
+  int _weight;
+  final String _label;
+  final void Function(int value) _onPressed;
+
+  _MinusPlusValueState({
+    required int weight,
+    required String label,
+    required void Function(int value) onPressed,
   })  : _weight = weight,
         _label = label,
         _onPressed = onPressed;
@@ -23,11 +43,11 @@ class MinusPlusValue extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          _label,
+          widget._label,
           style: kLabelTextStyle,
         ),
         Text(
-          _weight.toString(),
+          widget._weight.toString(),
           style: kNumberTextStyle,
         ),
         Row(
@@ -36,7 +56,7 @@ class MinusPlusValue extends StatelessWidget {
             RoundIconButton(
               onPressed: () {
                 _weight -= 1;
-                _onPressed();
+                widget._onPressed(_weight);
               },
               icon: Icons.remove,
             ),
@@ -46,7 +66,7 @@ class MinusPlusValue extends StatelessWidget {
             RoundIconButton(
               onPressed: () {
                 _weight += 1;
-                _onPressed();
+                widget._onPressed(_weight);
               },
               icon: Icons.add,
             ),
