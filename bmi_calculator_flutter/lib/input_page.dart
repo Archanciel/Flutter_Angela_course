@@ -133,7 +133,7 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     color: kActiveCardColor,
                     cardChild: MinusPlusValue(
-                      weight: 60,
+                      value: 60,
                       label: 'WEIGHT',
                     ),
                   ),

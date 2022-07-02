@@ -4,30 +4,30 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class MinusPlusValue extends StatefulWidget {
-  int _weight;
+  int _value;
   final String _label;
 
   MinusPlusValue({
-    required int weight,
+    required int value,
     required String label,
-  })  : _weight = weight,
+  })  : _value = value,
         _label = label;
 
   @override
   State<MinusPlusValue> createState() => _MinusPlusValueState(
-        weight: _weight,
+        value: _value,
         label: _label,
       );
 }
 
 class _MinusPlusValueState extends State<MinusPlusValue> {
-  int _weight;
+  int _value;
   final String _label;
 
   _MinusPlusValueState({
-    required int weight,
+    required int value,
     required String label,
-  })  : _weight = weight,
+  })  : _value = value,
         _label = label;
 
   @override
@@ -40,7 +40,7 @@ class _MinusPlusValueState extends State<MinusPlusValue> {
           style: kLabelTextStyle,
         ),
         Text(
-          _weight.toString(),
+          _value.toString(),
           style: kNumberTextStyle,
         ),
         Row(
@@ -48,11 +48,9 @@ class _MinusPlusValueState extends State<MinusPlusValue> {
           children: [
             RoundIconButton(
               onPressed: () {
-                print(_weight);
                 setState(() {
-                  _weight -= 1;
+                  _value -= 1;
                 });
-                print(_weight);
               },
               icon: Icons.remove,
             ),
@@ -61,7 +59,7 @@ class _MinusPlusValueState extends State<MinusPlusValue> {
             ),
             RoundIconButton(
               onPressed: () {
-                _weight += 1;
+                _value += 1;
                 setState(() {});
               },
               icon: Icons.add,
