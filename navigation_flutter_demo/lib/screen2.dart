@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Screen2 extends StatelessWidget {
+  /// Route two
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,9 +14,15 @@ class Screen2 extends StatelessWidget {
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.blue),
           ),
-          child: const Text('Go Back To Screen 1'),
+          child: const Text('Go Back Directly To Screen 0'),
           onPressed: () {
-            Navigator.pop(context);
+            //Navigator.pop(context); // go back to Screen 1. Simply use '<' on
+                                      // AppBar !
+            Navigator.popUntil(
+                context,
+                ModalRoute.withName(
+                  '/',
+                ));
           },
         ),
       ),
