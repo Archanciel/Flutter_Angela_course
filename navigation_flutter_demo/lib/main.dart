@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_flutter_demo/screen0.dart';
-import 'screen0.dart';
-import 'screen1.dart';
-import 'screen2.dart';
+import 'package:navigation_flutter_demo/screens/screen0.dart';
+import 'screens/screen0.dart';
+import 'screens/screen1.dart';
+import 'screens/screen2.dart';
 
 void main() => runApp(MyApp());
 
