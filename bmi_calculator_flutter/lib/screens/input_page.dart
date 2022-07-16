@@ -160,7 +160,7 @@ class _InputPageState extends State<InputPage> {
                 backgroundColor: MaterialStateProperty.all(Colors.red),
               ),
               child: const Text(
-                'RESULT',
+                'CALCULATE',
                 style: kButtonTextStyle,
               ),
               onPressed: () {

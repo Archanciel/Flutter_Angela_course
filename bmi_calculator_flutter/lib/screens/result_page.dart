@@ -9,12 +9,12 @@ import '../widgets/icon_content.dart';
 
 enum Gender { male, female }
 
-class ScreenResult extends StatefulWidget {
+class ResultPage extends StatefulWidget {
   @override
-  _ScreenResultState createState() => _ScreenResultState();
+  _ResultPageState createState() => _ResultPageState();
 }
 
-class _ScreenResultState extends State<ScreenResult> {
+class _ResultPageState extends State<ResultPage> {
   Color _maleCardColor = kInactiveCardColor;
   Color _femaleCardColor = kInactiveCardColor;
   Gender? _selectedGender;
