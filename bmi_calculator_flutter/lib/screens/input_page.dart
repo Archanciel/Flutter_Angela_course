@@ -155,6 +155,18 @@ class _InputPageState extends State<InputPage> {
             margin: EdgeInsets.only(top: 10),
             width: double.infinity,
             height: kBottomContainerHeight,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+              ),
+              child: const Text(
+                'RESULT',
+                style: kNumberTextStyle,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/screenResult');
+              },
+            ),
           )
         ],
       ),
