@@ -22,3 +22,8 @@ const kNumberTextStyle = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.w900,
 );
+const kButtonTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 35,
+  fontWeight: FontWeight.w900,
+);

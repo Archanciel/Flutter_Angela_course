@@ -161,7 +161,7 @@ class _InputPageState extends State<InputPage> {
               ),
               child: const Text(
                 'RESULT',
-                style: kNumberTextStyle,
+                style: kButtonTextStyle,
               ),
               onPressed: () {
                 Navigator.pushNamed(context, '/screenResult');

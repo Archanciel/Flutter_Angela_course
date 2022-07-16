@@ -155,6 +155,18 @@ class _ScreenResultState extends State<ScreenResult> {
             margin: EdgeInsets.only(top: 10),
             width: double.infinity,
             height: kBottomContainerHeight,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+              ),
+              child: const Text(
+                'RE-CALCULATE',
+                style: kButtonTextStyle,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           )
         ],
       ),
