@@ -1,11 +1,8 @@
 import 'package:bmi_calculator_flutter/widgets/minus_plus_value.dart';
 import 'package:bmi_calculator_flutter/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:bmi_calculator_flutter/widgets/constants.dart';
-import '../widgets/reusable_card.dart';
-import '../widgets/icon_content.dart';
 
 enum Gender { male, female }
 
