@@ -19,133 +19,75 @@ class _ResultPageState extends State<ResultPage> {
   Color _femaleCardColor = kInactiveCardColor;
   Gender? _selectedGender;
   int _height = 180;
-  //int _weight = 60;
+  String _resultType = 'NORMAL';
+  double _resultValue = 19.2;
+  String _resultCommentOne = 'You have a normal body weight.';
+  String _resultCommentTwo = 'Good job !';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BMI CALCULATOR'),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 0, top: 20),
+          child: Text(
+            'Your Result',
+            style: kResultAppBarTextStyle,
+          ),
+        ),
+        centerTitle: false,
+        automaticallyImplyLeading: false,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: ReusableCard(
-                    color: (_selectedGender == Gender.male)
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
-                    cardChild: const IconContent(
-                      icon: FontAwesomeIcons.mars,
-                      label: 'MALE',
-                    ),
-                    onPress: (() {
-                      setState(() {
-                        _selectedGender = Gender.male;
-                      });
-                    }),
-                  ),
-                ),
-                Expanded(
-                  child: ReusableCard(
-                    color: (_selectedGender == Gender.female)
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
-                    cardChild: const IconContent(
-                      icon: FontAwesomeIcons.venus,
-                      label: 'FEMALE',
-                    ),
-                    onPress: (() {
-                      setState(() {
-                        _selectedGender = Gender.female;
-                      });
-                    }),
+                Text(
+                  _resultType,
+                  style: const TextStyle(
+                    color: kNormalColor,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: ReusableCard(
-              color: kActiveCardColor,
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'HEIGHT',
-                        style: kLabelTextStyle,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    textBaseline: TextBaseline.alphabetic,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    children: [
-                      Text(
-                        _height.toString(),
-                        style: kNumberTextStyle,
-                      ),
-                      const Text(
-                        'cm',
-                        style: kLabelTextStyle,
-                      )
-                    ],
-                  ),
-                  SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      inactiveTrackColor: kSliderInactiveColor,
-                      activeTrackColor: kSliderActiveColor,
-                      thumbColor: kSliderThumbColor,
-                      overlayColor: kSliderOverlayColor,
-                      thumbShape:
-                          const RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                      overlayShape:
-                          const RoundSliderOverlayShape(overlayRadius: 30.0),
-                    ),
-                    child: Slider(
-                        value: _height.toDouble(),
-                        min: kSliderMinValue,
-                        max: kSliderMaxValue,
-                        onChanged: (double newValue) {
-                          _height = newValue.round();
-                          setState(() {});
-                        }),
-                  ),
-                ],
+            child: Text(
+              _resultValue.toString(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 95,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(
-                  child: ReusableCard(
-                    color: kActiveCardColor,
-                    cardChild: MinusPlusValue(
-                      value: 60,
-                      label: 'WEIGHT',
-                    ),
+                Text(
+                  _resultCommentOne,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
+                  maxLines: 2,
                 ),
-                Expanded(
-                  child: ReusableCard(
-                    color: kActiveCardColor,
-                    cardChild: MinusPlusValue(
-                      value: 19,
-                      label: 'AGE',
-                    ),
+                Text(
+                  _resultCommentTwo,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
+                  maxLines: 2,
                 ),
               ],
             ),
