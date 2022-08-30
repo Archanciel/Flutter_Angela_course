@@ -1,14 +1,13 @@
 // https://gist.github.com/angelabauer/c19c42b7795a185d2113f3b47263d2c0
-import 'dart:io';
 
 void main() {
   performTasks();
 }
 
-void performTasks()  {
-   task1();
-   task2();
-   task3();
+void performTasks() async {
+  task1();
+  String? taskTwoRes = await task2();
+  task3(taskTwoRes);
 }
 
 void task1() {
@@ -16,12 +15,19 @@ void task1() {
   print('Task 1 complete');
 }
 
-void task2()  {
- String result = 'task 2 data';
-  print('Task 2 complete');
+Future<String?> task2() async {
+  Duration waitThreeSeconds = Duration(seconds: 3);
+  String? result;
+
+  await Future.delayed(waitThreeSeconds, () {
+    result = 'task 2 data';
+    print('Task 2 complete');
+  });
+
+  return result;
 }
 
-void task3() {
- String result = 'task 3 data';
-  print('Task 3 complete');
+void task3(String? data) {
+  String result = 'task 3 data';
+  print('Task 3 complete, $data');
 }
