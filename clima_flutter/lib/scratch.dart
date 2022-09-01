@@ -1,17 +1,30 @@
 // https://gist.github.com/angelabauer/c19c42b7795a185d2113f3b47263d2c0
 
-void main() {
-  performTasks();
+Future<void> main() async {
+  await performTasksWait(); //  Task 1 complete
+//                              Task 2 complete
+//                              Task 3 complete, task 2 data
+
+  await performTasksThen(); //  Task 1 complete
+//                              Task 3 complete, null
+//                              Task 2 complete
 }
 
-void performTasks() async {
+Future<void> performTasksWait() async {
   task1();
   String? taskTwoRes = await task2();
   task3(taskTwoRes);
 }
 
+Future<void> performTasksThen() async {
+  task1();
+//  String? taskTwoRes = await task2();
+  String? taskTwoRes;
+  task2().then((value) => taskTwoRes = value);
+  task3(taskTwoRes);
+}
+
 void task1() {
-  String result = 'task 1 data';
   print('Task 1 complete');
 }
 
@@ -28,6 +41,5 @@ Future<String?> task2() async {
 }
 
 void task3(String? data) {
-  String result = 'task 3 data';
   print('Task 3 complete, $data');
 }

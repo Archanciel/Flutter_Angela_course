@@ -11,14 +11,18 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    print('initState before calling getPosition()');
+    print('initState before calling getLocation()');
+
+    // since it is not possible to place async key word on
+    // initState() method signature, obtaining the location
+    // from GeoLocator must be placed in an async sub method !
     getLocation();
-    print('initState after calling getPosition()');
+    
+    print('initState after calling getLocation()');
   }
 
-  void getLocation() async {
+  Future<void> getLocation() async {
     _pos = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.low);
     print(_pos);
