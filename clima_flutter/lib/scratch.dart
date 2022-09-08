@@ -1,13 +1,25 @@
 // https://gist.github.com/angelabauer/c19c42b7795a185d2113f3b47263d2c0
 
 Future<void> main() async {
-  await performTasksWait(); //  Task 1 complete
+  print('before calling await performTasksWait()');
+  await performTasksWait(); //  before calling await performTasksWait()
+//                              Task 1 complete
 //                              Task 2 complete
 //                              Task 3 complete, task 2 data
+//                              after calling await performTasksWait()
+  print('after calling await performTasksWait()');
 
-  await performTasksThen(); //  Task 1 complete
+//  await performTasksThen(); //  Task 1 complete
 //                              Task 3 complete, null
 //                              Task 2 complete
+
+  print('before calling performTasksWait()');
+  performTasksWait(); //  before calling performTasksWait()
+//                        Task 1 complete
+//                        after calling await performTasksWait()
+//                        Task 2 complete
+//                        Task 3 complete, task 2 data
+  print('after calling performTasksWait()');
 }
 
 Future<void> performTasksWait() async {

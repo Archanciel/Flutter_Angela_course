@@ -25,7 +25,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Future<void> getLocation() async {
     _pos = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.low);
-    print(_pos);
+    print('getLocation(): $_pos');
   }
 
   @override
