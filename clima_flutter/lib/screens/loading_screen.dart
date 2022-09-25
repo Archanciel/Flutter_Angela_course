@@ -11,11 +11,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Location _location = Location();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
