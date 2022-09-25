@@ -1,3 +1,4 @@
+import 'package:clima/services/location.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -7,25 +8,11 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  late Position _pos;
+  Location _location = Location();
 
   @override
   void initState() {
     super.initState();
-    print('initState before calling getLocation()');
-
-    // since it is not possible to place async key word on
-    // initState() method signature, obtaining the location
-    // from GeoLocator must be placed in an async sub method !
-    getLocation();
-    
-    print('initState after calling getLocation()');
-  }
-
-  Future<void> getLocation() async {
-    _pos = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low);
-    print('getLocation(): $_pos');
   }
 
   @override
@@ -34,7 +21,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            //Get the current location
+            _location.getLocation();
+            print('latitude: ${_location.latitude}');
+            print('longitude: ${_location.longitude}');
           },
           child: Text('Get Location'),
         ),
